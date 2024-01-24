@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body class="w-screen h-screen flex flex-col gap-5 bg-zinc-100 p-4">
+    <header class="w-full h-[96px] flex">
+      <img src="./assets/alura-logo.svg" alt="Alura logo" class="w-10" />
+    </header>
+    <main
+      class="grid grid-cols-1 place-content-around gap-4 px-4 h-full xl:flex xl:relative"
+    >
+      <textarea
+        id="input-text"
+        placeholder="Digite seu texto"
+        class="xl:h-fit px-2 py-4 w-full min-h-fit text-lg md:text-2xl text-[#0A3871] font-semibold placeholder-[#0A3871] border-2 rounded-md focus:border-blue-500"
+        required
+      ></textarea>
+
+      <div
+        class="flex flex-col gap-4 xl:absolute xl:w-full xl:max-w-2xl xl:bottom-5 xl:left-5"
+      >
+        <div class="flex gap-2 items-center">
+          <img
+            src="./assets/attention-marked.svg"
+            alt="Marcador de atenção no formato de icone"
+            class="w-4"
+          />
+          <span class="text-sm font-normal"
+            >Apenas letras minúsculas e sem acento.</span
+          >
+        </div>
+        <div
+          class="flex flex-col items-center justify-center gap-6 sm:flex-row xl:w-full"
+        >
+          <button
+            onclick='Message("encripted")'
+            class="bg-[#0A3871] w-full max-w-md h-[67px] rounded-3xl text-white font-normal tracking-wider shadow-xl hover:bg-indigo-900/90 hover:cursor-pointer transition-all duration-300 ease-in-out"
+          >
+            Criptografar
+          </button>
+          <button
+            onclick="Message('decripted')"
+            class="bg-zinc-100 border border-[#0A3871] text-[#0A3871] w-full max-w-md h-[67px] rounded-3xl font-semibold tracking-wider text-md hover:bg-white hover:cursor-pointer transition-all duration-300 ease-in-out"
+          >
+            Descriptografar
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="not-found-content"
+        class="xl:w-fit w-full bg-white flex flex-col items-center justify-center gap-4 rounded-2xl shadow-xl text-center p-4"
+      >
+        <img
+          src="./assets//human-search-draw.svg"
+          alt="Figura em desenho de um humano segurando uma lupa e observando um diamante."
+          class="hidden xl:block"
+        />
+        <h2 class="font-bold tracking-wide text-xl">
+          Nenhuma mensagem encontrada
+        </h2>
+        <p class="font-normal tracking-wide">
+          Digite um texto que você deseja criptografar ou descriptografar.
+        </p>
+      </div>
+
+      <div
+        id="message-content"
+        class="xl:max-w-sm w-full min-h-full bg-white hidden flex-col items-center justify-between gap-4 rounded-2xl shadow-xl text-center p-4"
+      >
+        <p
+          id="paragraph-message"
+          class="font-semibold text-sm h-fit w-fit text-justify"
+        ></p>
+
+        <button
+          onclick="CopyMessageButtom()"
+          class="bg-white border border-[#0A3871] text-[#0A3871] w-full max-w-md h-[50px] rounded-3xl font-semibold tracking-wider text-md hover:bg-zinc-200/30 hover:cursor-pointer transition-all duration-300 ease-in-out"
+        >
+          Copiar
+        </button>
+      </div>
+    </main>
+    <script src="./index.js"></script>
+  </body>
+</html>
